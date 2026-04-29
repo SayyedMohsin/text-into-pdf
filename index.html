@@ -38,10 +38,10 @@
         .btn-tool:hover { border-color: var(--primary); color: var(--primary); background: #fcfaff; }
         .btn-purple { background: var(--primary); color: white; border: none; padding: 10px 18px; }
 
-        /* 1. Hero Text: Padding ko thoda barha diya taaki overlap na ho */
+       /* 1. Hero Text: Padding kam ki taaki canvas upar aaye */
 .hero-text { 
     text-align: center; 
-    padding: 110px 10px 20px; /* 85px ko 110px kiya taaki overlap na ho */
+    padding: 95px 10px 0px; /* 110px se kam karke 95px kiya */
     font-weight: 800; 
     font-size: 26px; 
     pointer-events: none; 
@@ -50,27 +50,29 @@
 }
 .hero-text span { color: var(--primary); }
 
-/* 2. Workspace: Gap ko 25px kar diya taaki balance bana rahe */
+/* 2. Workspace: Gap khatam kiya taaki canvas upar khisak jaye */
 .workspace { 
     flex: 1; 
     overflow-y: auto; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    padding: 10px 0 120px; /* Thoda top padding add kiya */
-    gap: 25px; /* Gap ko 10px se barha kar 25px kiya */
+    padding: 0px 0 120px; 
+    gap: 10px; /* Gap kam karke canvas ko upar khich liya */
     position: relative; 
     z-index: 10; 
 }
 
-/* 3. Ad Container: Ise check karein */
-.ad-container { 
-    width: 100%; 
-    max-width: 794px; 
-    margin: 0 auto; 
-    text-align: center; 
-    min-height: 2px; /* Bilkul thodi jagah */
-    background: transparent; 
+/* 3. Canvas Card: Blue/Purple Border wapas add ki */
+.canvas-card { 
+    position: relative; 
+    background: white; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+    border: 2px solid var(--primary); /* Blue/Purple border restored */
+    z-index: 10; 
+    transform-origin: top center; 
+    transition: transform 0.2s;
+    margin-top: 0px; 
 }
         /* FLOATING TOOLBAR - Scrollable on Mobile */
         #floating-toolbar {
