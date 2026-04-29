@@ -38,41 +38,54 @@
         .btn-tool:hover { border-color: var(--primary); color: var(--primary); background: #fcfaff; }
         .btn-purple { background: var(--primary); color: white; border: none; padding: 10px 18px; }
 
-        /* 1. Hero Text ki padding kam karein (Line 42 ke paas) */
+        /* 1. Hero Text: Ise Navbar ke theek niche set karein */
 .hero-text { 
     text-align: center; 
-    padding: 110px 10px 5px; /* Pehle 180px tha, ab 110px kar diya */
+    padding: 85px 10px 0px; /* Navbar 70px hai, toh 85px perfect rahega */
     font-weight: 800; 
-    font-size: 26px; 
+    font-size: 24px; 
     pointer-events: none; 
     position: relative; 
-    z-index: 100; 
+    z-index: 100;
+    margin-bottom: -10px; /* Neeche ka gap khatam karne ke liye */
 }
+.hero-text span { color: var(--primary); }
 
-/* 2. Workspace ka gap aur padding sahi karein (Line 50 ke paas) */
+/* 2. Workspace: Extra gaps khatam karein */
 .workspace { 
     flex: 1; 
     overflow-y: auto; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    padding: 0 0 100px; /* Top padding 0 kar di */
-    gap: 15px; /* Gap ko 40px se 15px kar diya */
+    padding: 0px 0 120px; 
+    gap: 10px; /* Elements ke beech ka gap bilkul kam kar diya */
     position: relative; 
     z-index: 10; 
 }
 
-/* 3. Ad Container ko "Invisible" rakhein jab tak ad na aaye */
+/* 3. Ad Container Fix: Jab tak ad na aaye, ye jagah nahi gherega */
 .ad-container { 
     width: 100%; 
     max-width: 794px; 
     margin: 0 auto; 
     text-align: center; 
-    min-height: 10px; /* Jab tak ad nahi aayegi, ye jagah nahi gherega */
     background: transparent; 
-    border: none; /* Border hata di taaki gap na dikhe */
+    border: none;
+    line-height: 0; /* Extra white space hatane ke liye */
 }
 
+/* 4. Canvas Card: Ise thoda upar shift karein */
+.canvas-card { 
+    position: relative; 
+    background: white; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+    border: 2px solid transparent; 
+    z-index: 10; 
+    transform-origin: top center; 
+    transition: transform 0.2s;
+    margin-top: 5px; 
+}
         /* FLOATING TOOLBAR - Scrollable on Mobile */
         #floating-toolbar {
             position: fixed; top: 75px; left: 50%; transform: translateX(-50%);
