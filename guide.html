@@ -4,28 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Guide | NexGen Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; padding: 50px 20px; max-width: 800px; margin: auto; color: #333; }
-        h1 { color: #8b3dff; }
-        .back-home { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #8b3dff; font-weight: bold; }
+        :root { --primary: #8b3dff; --text: #1f2937; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; color: var(--text); background: white; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .header-section { background: #fcfaff; padding: 100px 20px 60px; text-align: center; border-bottom: 1px solid #eee; }
+        .container { max-width: 850px; margin: auto; padding: 50px 20px; flex: 1; }
+        h1 { font-size: 45px; letter-spacing: -1px; }
+        h2 { font-size: 26px; color: var(--primary); margin-top: 40px; border-bottom: 2px solid #f4f5f7; padding-bottom: 8px; }
+        
+        .project-footer { height: 60px; background: white; border-top: 1px solid #d2d2d2; display: flex; justify-content: center; align-items: center; width: 100%; margin-top: auto; }
+        .footer-content { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #333; flex-wrap: wrap; justify-content: center; }
+        .footer-content a { text-decoration: none; color: #1e1e1e; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .v-sep { width: 1px; height: 16px; background: #d2d2d2; }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-home">← Back to Editor</a>
-    <h1>NexGen Studio: Professional User Guide</h1>
-    <p>NexGen Studio is a world-class online editor designed for high-quality document creation. Here is how you can use it to its full potential.</p>
-    
-    <h2>How to Create a PDF?</h2>
-    <ul>
-        <li>Add text components like Headings and Body from the navbar.</li>
-        <li>Customize fonts and colors using the dynamic floating toolbar.</li>
-        <li>Upload images and use our precision crop tool to fit them into your layout.</li>
-        <li>Once ready, click the 'PDF' button to download your high-resolution file.</li>
-    </ul>
+    <div class="header-section">
+        <h1>NexGen Studio User Guide</h1>
+        <p>Learn how to create professional documents with our easy-to-use editor.</p>
+    </div>
 
-    <h2>Frequently Asked Questions</h2>
-    <p><strong>Is it free?</strong> Yes, NexGen Studio is 100% free for everyone.</p>
-    <p><strong>Are my files safe?</strong> Yes, we process everything locally in your browser. No data is stored on our servers.</p>
+    <main class="container">
+        <h2>How to Create a Professional PDF?</h2>
+        <p>1. Start by adding <strong>Heading</strong> or <strong>Body</strong> text from the top navbar. You can double-click any text to edit its content.</p>
+        <p>2. Use the <strong>Floating Toolbar</strong> to customize fonts (Inter, Poppins, Montserrat) and colors. You can also adjust text alignment (Left, Center, Right, Justify) for a better layout.</p>
+        <p>3. <strong>Upload Images:</strong> Use the upload button to bring in your own logos or photos. Our <strong>Precision Crop</strong> tool allows you to focus on the perfect area of your image.</p>
+        <p>4. <strong>Managing Pages:</strong> Add multiple pages for complex documents and rotate them between Portrait and Landscape using the <strong>Rotate</strong> tool.</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <p><strong>Is NexGen Studio free?</strong> Yes, our tool is 100% free and always will be.</p>
+        <p><strong>Is it mobile-friendly?</strong> Absolutely. You can design on the go using our responsive mobile interface.</p>
+    </main>
+
+    <footer class="project-footer">
+        <div class="footer-content">
+            <span>© 2026 Syed Mohsin</span>
+            <div class="v-sep"></div>
+            <a href="index.html">Home</a>
+            <a href="guide.html">Guide</a>
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="contact.html">Contact</a>
+            <div class="v-sep"></div>
+            <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
