@@ -10,46 +10,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
     <style>
         :root { --primary: #8b3dff; --bg: #f4f5f7; --border: #d2d2d2; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); display: flex; flex-direction: column; height: 100vh; overflow-x: hidden; }
 
+        /* NAVBAR */
         .navbar { height: 70px; background: white; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 3000; position: fixed; top: 0; width: 100%; }
         .nav-left { font-weight: 800; font-size: 18px; color: var(--primary); text-decoration: none; flex-shrink: 0; }
         .nav-center-tools { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; overflow-x: auto; padding: 5px 15px; -webkit-overflow-scrolling: touch; }
-        .btn-tool { background: white; border: 1px solid #ddd; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 6px; white-space: nowrap; color: #333; flex-shrink: 0; transition: 0.2s; }
+        .nav-center-tools::-webkit-scrollbar { display: none; }
+
+        .btn-tool { background: white; border: 1px solid #ddd; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 6px; white-space: nowrap; color: #333; flex-shrink: 0; }
         .btn-tool:hover { border-color: var(--primary); color: var(--primary); background: #fcfaff; }
         .btn-purple { background: var(--primary); color: white; border: none; padding: 10px 18px; }
 
-        .hero-text { text-align: center; padding: 95px 10px 0px; font-weight: 800; font-size: 26px; pointer-events: none; position: relative; z-index: 100; }
+        /* HERO & ADS */
+        .hero-text { text-align: center; padding: 100px 10px 0px; font-weight: 800; font-size: 26px; position: relative; z-index: 100; }
         .hero-text span { color: var(--primary); }
+        .ad-container { width: 100%; max-width: 900px; margin: 15px auto; text-align: center; overflow: hidden; background: #fff; border-radius: 8px; }
 
-        .workspace { flex: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 0px 0 120px; gap: 10px; position: relative; z-index: 10; }
-        .canvas-card { position: relative; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid var(--primary); z-index: 10; transform-origin: top center; transition: transform 0.2s; }
+        /* WORKSPACE */
+        .workspace { flex: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 10px 0 120px; gap: 20px; position: relative; }
+        .canvas-card { position: relative; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid var(--primary); transform-origin: top center; transition: transform 0.2s; }
+        
+        /* PAGE DELETE ICON */
+        .page-delete-btn { position: absolute; top: -15px; right: -15px; background: #ff4d4d; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 50; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        #floating-toolbar { position: fixed; top: 75px; left: 50%; transform: translateX(-50%); display: none; background: white; padding: 10px 20px; border-radius: 0 0 15px 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 2500; align-items: center; gap: 10px; border: 1px solid #eee; border-top: none; }
+        /* TOOLBARS */
+        #floating-toolbar { position: fixed; top: 75px; left: 50%; transform: translateX(-50%); display: none; background: white; padding: 10px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 2500; align-items: center; gap: 10px; border: 1px solid #eee; max-width: 95vw; overflow-x: auto; }
         #floating-toolbar.active { display: flex; }
         .v-sep { width: 1px; height: 25px; background: #eee; flex-shrink: 0; }
-        select, .size-input { border: 1px solid #ddd; border-radius: 6px; padding: 5px; font-weight: 600; outline: none; background: #fafafa; }
 
+        /* ZOOM */
         .zoom-controls { position: fixed; bottom: 80px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 2000; }
-        .btn-zoom { width: 40px; height: 40px; border-radius: 50%; background: white; border: 1px solid #ddd; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: #333; }
+        .btn-zoom { width: 40px; height: 40px; border-radius: 50%; background: white; border: 1px solid #ddd; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
+        /* FOOTER */
         .project-footer { height: 55px; background: white; border-top: 1px solid #d2d2d2; display: flex; justify-content: center; align-items: center; width: 100%; z-index: 2000; position: fixed; bottom: 0; }
-        .footer-content { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #666; overflow-x: auto; padding: 0 15px; }
-        .footer-content a { text-decoration: none; color: #1e1e1e; font-weight: 600; white-space: nowrap; }
-
-        /* AD CONTAINER */
-        .ad-container { width: 100%; max-width: 900px; margin: 10px auto; text-align: center; overflow: hidden; }
+        .footer-content { display: flex; align-items: center; gap: 15px; font-size: 12px; color: #666; }
 
         @media (max-width: 768px) {
             .nav-left { display: none; }
             .hero-text { padding-top: 130px; font-size: 18px; }
             .canvas-card { transform: scale(0.42) !important; margin-bottom: -600px; }
-            #floating-toolbar { top: 70px; border-radius: 12px; }
+            #floating-toolbar { top: 125px; }
         }
     </style>
 </head>
@@ -86,17 +93,23 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
+        <div class="zoom-controls">
+            <button class="btn-zoom" onclick="changeZoom(0.1)"><i data-lucide="zoom-in"></i></button>
+            <button class="btn-zoom" onclick="changeZoom(-0.1)"><i data-lucide="zoom-out"></i></button>
+            <button class="btn-zoom" onclick="resetZoom()"><i data-lucide="maximize"></i></button>
+        </div>
+
         <div id="floating-toolbar">
             <div id="text-edit-tools" style="display:none; align-items:center; gap:8px;">
-                <select id="font-family" onchange="updateStyle('fontFamily', this.value)" style="width:110px">
+                <select id="font-family" onchange="updateStyle('fontFamily', this.value)" style="width:100px">
                     <option value="Arial">Arial</option>
                     <option value="Inter" selected>Inter</option>
                     <option value="Poppins">Poppins</option>
                     <option value="Montserrat">Montserrat</option>
                     <option value="Pacifico">Pacifico</option>
                 </select>
-                <input type="number" id="font-size" class="size-input" style="width:50px" onchange="updateStyle('fontSize', this.value)">
-                <input type="color" id="font-color" onchange="updateStyle('fill', this.value)">
+                <input type="number" id="font-size" style="width:50px" onchange="updateStyle('fontSize', this.value)">
+                <input type="color" onchange="updateStyle('fill', this.value)">
                 <div class="v-sep"></div>
                 <button class="btn-tool" onclick="toggleFormat('bold')"><i data-lucide="bold" size="16"></i></button>
                 <button class="btn-tool" onclick="toggleFormat('italic')"><i data-lucide="italic" size="16"></i></button>
@@ -106,22 +119,40 @@
                 <button class="btn-tool" onclick="updateStyle('textAlign', 'center')"><i data-lucide="align-center" size="16"></i></button>
                 <button class="btn-tool" onclick="updateStyle('textAlign', 'right')"><i data-lucide="align-right" size="16"></i></button>
             </div>
+            
+            <div id="line-edit-tools" style="display:none; align-items:center; gap:8px;">
+                <span>Weight:</span>
+                <input type="number" style="width:50px" value="2" onchange="updateStyle('height', this.value)">
+            </div>
+
+            <button class="btn-tool" id="btn-start-crop" style="display:none; color:var(--primary);" onclick="startCropMode()"><i data-lucide="crop"></i> CROP</button>
             <div class="v-sep"></div>
             <button class="btn-tool" style="color:#ff4d4d;" onclick="deleteObject()"><i data-lucide="trash-2"></i></button>
+
+            <div id="crop-actions" style="display:none; gap:10px;">
+                <button class="btn-tool btn-purple" onclick="applyCrop()">Apply</button>
+                <button class="btn-tool" style="background:#ff4d4d; color:white; border:none;" onclick="cancelCrop()">Cancel</button>
+            </div>
         </div>
 
         <div class="canvas-card active-page" id="card-1">
+            <button class="page-delete-btn" onclick="deletePage('card-1')"><i data-lucide="trash-2" size="14"></i></button>
             <canvas id="canva-1"></canvas>
         </div>
 
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6665013032384689" data-ad-slot="6771712502" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
         <section style="max-width: 900px; margin: 40px auto; padding: 30px; line-height: 1.8; color: #333; background: #fff; border-radius: 15px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h2 style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px;">NexGen Studio: Professional Text to PDF Editor</h2>
-            <p>NexGen Studio is a powerful online editor that helps you create high-quality PDF documents. Whether you need to format text, add professional fonts, or crop images, our tool provides everything on a single dynamic canvas.</p>
-            <h3 style="margin-top: 25px;">Advanced Features:</h3>
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px;">NexGen Studio: Professional Online PDF Creator</h2>
+            <p>NexGen Studio is an all-in-one web solution designed for high-quality document editing. Our platform allows users to design, format, and export text into PDF format instantly, ensuring professional results for students and businesses alike.</p>
+            <h3 style="margin-top: 25px;">Key Document Tools:</h3>
             <ul>
-                <li><strong>Smart Image Tools:</strong> Upload and crop images perfectly using our built-in MediaPipe tracking.</li>
-                <li><strong>Dynamic Layout:</strong> Use premium fonts like Poppins and Montserrat to make your documents stand out.</li>
-                <li><strong>Privacy First:</strong> Everything is processed in your browser. Your data never leaves your device.</li>
+                <li><strong>Advanced Image Processing:</strong> Seamlessly upload and crop images to fit your document layout.</li>
+                <li><strong>Rich Text Support:</strong> Over 20+ professional fonts with full alignment and styling controls.</li>
+                <li><strong>Canvas Freedom:</strong> A dynamic drag-and-drop workspace powered by Fabric.js for precision.</li>
             </ul>
         </section>
 
@@ -134,14 +165,9 @@
     <footer class="project-footer">
         <div class="footer-content">
             <span>© 2026 Sayyed Mohsin Ali</span>
-            <div class="v-sep"></div>
             <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
             <a href="privacy.html">Privacy Policy</a>
             <a href="contact.html">Contact Us</a>
-            <div class="v-sep"></div>
-            <a href="https://github.com/SayyedMohsin" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank">LinkedIn</a>
         </div>
     </footer>
 
@@ -169,27 +195,41 @@
 
     function syncToolbar(obj) {
         if(isPreview) return;
-        const tb = document.getElementById('floating-toolbar');
-        tb.classList.add('active');
+        document.getElementById('floating-toolbar').classList.add('active');
         document.getElementById('text-edit-tools').style.display = obj.type.includes('text') ? 'flex' : 'none';
-        if(obj.type.includes('text')) {
-            document.getElementById('font-size').value = obj.fontSize;
-            document.getElementById('font-color').value = obj.fill;
-        }
+        document.getElementById('line-edit-tools').style.display = obj.type === 'rect' ? 'flex' : 'none';
+        document.getElementById('btn-start-crop').style.display = obj.type === 'image' ? 'flex' : 'none';
     }
 
-    function addText(t) { activeCanvas.discardActiveObject(); const txt = new fabric.IText(t==='heading'?'Heading':'Body Text', { left: 100, top: 100, fontSize: t==='heading'?40:20, fontFamily:'Arial' }); activeCanvas.add(txt).setActiveObject(txt).renderAll(); }
+    function startCropMode() {
+        targetImg = activeCanvas.getActiveObject();
+        if(!targetImg) return;
+        document.getElementById('crop-actions').style.display = 'flex';
+        cropRect = new fabric.Rect({ left: targetImg.left, top: targetImg.top, width: 200, height: 200, fill: 'rgba(139,61,255,0.3)', stroke: '#8b3dff', strokeDashArray: [5,5] });
+        activeCanvas.add(cropRect).setActiveObject(cropRect).renderAll();
+    }
+
+    function applyCrop() {
+        const sX = targetImg.scaleX, sY = targetImg.scaleY;
+        targetImg.set({ cropX: (cropRect.left - targetImg.left)/sX, cropY: (cropRect.top - targetImg.top)/sY, width: cropRect.width, height: cropRect.height });
+        cancelCrop();
+    }
+
+    function cancelCrop() { activeCanvas.remove(cropRect); cropRect = null; document.getElementById('crop-actions').style.display = 'none'; activeCanvas.renderAll(); }
+    function deletePage(id) { if(canvases.length > 1) { document.getElementById(id).remove(); canvases = canvases.filter(c => c.lowerCanvasEl.id !== id.replace('card','canva')); } }
+    function addText(t) { const txt = new fabric.IText(t==='heading'?'Heading':'Body', { left: 100, top: 100, fontSize: t==='heading'?40:20, fontFamily:'Inter' }); activeCanvas.add(txt).setActiveObject(txt).renderAll(); }
     function addLine() { const line = new fabric.Rect({ left: 100, top: 150, width: 400, height: 2, fill: '#333' }); activeCanvas.add(line).setActiveObject(line); }
     function uploadImage(e) { const reader = new FileReader(); reader.onload = (f) => { fabric.Image.fromURL(f.target.result, (img) => { img.scaleToWidth(400); activeCanvas.add(img).setActiveObject(img); }); }; reader.readAsDataURL(e.target.files[0]); e.target.value = ''; }
-    function updateStyle(p, v) { const o = activeCanvas.getActiveObject(); if(o) { o.set(p, (p==='fontSize' || p==='height') ? parseInt(v) : v); activeCanvas.renderAll(); } }
+    function updateStyle(p, v) { const o = activeCanvas.getActiveObject(); if(o) { o.set(p, (p==='fontSize'||p==='height')?parseInt(v):v); activeCanvas.renderAll(); } }
     function toggleFormat(f) { const o = activeCanvas.getActiveObject(); if(o) { if(f==='bold') o.set('fontWeight', o.fontWeight==='bold'?'normal':'bold'); if(f==='italic') o.set('fontStyle', o.fontStyle==='italic'?'normal':'italic'); if(f==='underline') o.set('underline', !o.underline); activeCanvas.renderAll(); } }
-    function deleteObject() { const obj = activeCanvas.getActiveObject(); if(obj) { activeCanvas.remove(obj); activeCanvas.discardActiveObject().renderAll(); } }
+    function deleteObject() { activeCanvas.remove(activeCanvas.getActiveObject()); activeCanvas.discardActiveObject().renderAll(); }
     function changeBG(val) { activeCanvas.setBackgroundColor(val, activeCanvas.renderAll.bind(activeCanvas)); }
-    function changeZoom(val) { currentZoom = Math.min(Math.max(currentZoom + val, 0.5), 2); document.querySelectorAll('.canvas-card').forEach(card => card.style.transform = `scale(${currentZoom})`); }
+    function changeZoom(val) { currentZoom = Math.min(Math.max(currentZoom + val, 0.4), 2); document.querySelectorAll('.canvas-card').forEach(card => card.style.transform = `scale(${currentZoom})`); }
     function resetZoom() { currentZoom = 1; document.querySelectorAll('.canvas-card').forEach(card => card.style.transform = `scale(1)`); }
     function togglePreview() { isPreview = !isPreview; document.body.classList.toggle('preview-active', isPreview); canvases.forEach(c => { c.discardActiveObject(); c.selection = !isPreview; c.forEachObject(o => o.selectable = !isPreview); c.renderAll(); }); }
+    function toggleOrientation() { const w = activeCanvas.width; activeCanvas.setDimensions({ width: activeCanvas.height, height: w }); activeCanvas.renderAll(); }
     function downloadPDF() { const { jsPDF } = window.jspdf; const pdf = new jsPDF('p', 'mm', 'a4'); pdf.addImage(activeCanvas.toDataURL({format:'png', multiplier:2}), 'PNG', 0, 0, 210, 297); pdf.save('NexGen_Studio.pdf'); }
-    function addNewPage() { const id = `canva-${Date.now()}`; const card = document.createElement('div'); card.className = 'canvas-card'; card.innerHTML = `<canvas id="${id}"></canvas>`; document.getElementById('workspace').appendChild(card); setActive(initCanvas(id)); lucide.createIcons(); }
+    function addNewPage() { const id = `canva-${Date.now()}`; const cardId = `card-${Date.now()}`; const card = document.createElement('div'); card.className = 'canvas-card'; card.id = cardId; card.innerHTML = `<button class="page-delete-btn" onclick="deletePage('${cardId}')"><i data-lucide="trash-2" size="14"></i></button><canvas id="${id}"></canvas>`; document.getElementById('workspace').appendChild(card); setActive(initCanvas(id)); lucide.createIcons(); }
 </script>
 </body>
 </html>
