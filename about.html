@@ -10,32 +10,42 @@
         :root { --primary: #8b3dff; --bg: #f4f5f7; --text: #1f2937; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.8; display: flex; flex-direction: column; min-height: 100vh; }
         .navbar { height: 70px; background: white; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 40px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .nav-left { font-weight: 800; font-size: 22px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .nav-left i { color: var(--primary); }
-        .container { max-width: 900px; margin: 120px auto 60px; padding: 0 20px; flex: 1; }
-        .card { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        h1 { font-size: 40px; letter-spacing: -1px; margin-bottom: 20px; }
-        h2 { color: var(--primary); margin-top: 35px; font-size: 24px; }
-        p { font-size: 17px; margin-bottom: 20px; }
-
+        .nav-left { font-weight: 800; font-size: 18px; color: var(--primary); text-decoration: none; }
+        .container { max-width: 1000px; margin: 120px auto 60px; padding: 0 20px; flex: 1; }
+        .card { background: white; padding: 60px; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); }
+        h1 { font-size: 42px; font-weight: 800; margin-bottom: 25px; color: #111; letter-spacing: -1px; }
+        h2 { font-size: 28px; color: var(--primary); margin-top: 45px; margin-bottom: 15px; border-bottom: 2px solid #f4f5f7; padding-bottom: 10px; }
+        p { font-size: 18px; color: #4b5563; margin-bottom: 25px; text-align: justify; }
+        .highlight-box { background: rgba(139, 61, 255, 0.05); border-left: 5px solid var(--primary); padding: 35px; margin: 40px 0; border-radius: 0 15px 15px 0; }
+        
         .project-footer { height: 60px; background: white; border-top: 1px solid #d2d2d2; display: flex; justify-content: center; align-items: center; width: 100%; margin-top: auto; }
-        .footer-content { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #333; flex-wrap: wrap; justify-content: center; }
+        .footer-content { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #333; flex-wrap: wrap; justify-content: center; padding: 0 10px; }
         .footer-content a { text-decoration: none; color: #1e1e1e; font-weight: 600; display: flex; align-items: center; gap: 6px; }
         .v-sep { width: 1px; height: 16px; background: #d2d2d2; }
     </style>
 </head>
 <body>
-    <header class="navbar"><a href="index.html" class="nav-left"><i data-lucide="layers"></i> NexGen Studio</a></header>
+    <header class="navbar"><a href="index.html" class="nav-left">NexGen Studio</a></header>
     <main class="container">
         <div class="card">
-            <h1>About NexGen Studio</h1>
-            <p>Welcome to <strong>NexGen Studio</strong>, your premium destination for effortless digital design and document editing. Founded by <strong>Sayyed Mohsin Ali</strong>, NexGen Studio was built with a vision to provide a high-performance, intuitive drag-and-drop experience for editing PDFs and creating professional layouts.</p>
+            <h1>The Journey of NexGen Studio</h1>
+            <p>Welcome to <strong>NexGen Studio</strong>, an innovative digital ecosystem meticulously crafted for high-performance document editing and creative design. Founded and developed by <strong>Sayyed Mohsin Ali</strong>, NexGen Studio represents a significant milestone in the democratization of professional design tools. Our platform was born from a singular vision: to bridge the gap between complex graphic design software and the need for fast, accessible, and high-quality PDF creation.</p>
             
-            <h2>Our Tech Philosophy</h2>
-            <p>Unlike traditional editors that require heavy server-side processing, NexGen Studio runs entirely on <strong>client-side technology</strong>. This ensures that your private data never leaves your browser, making it one of the most secure ways to edit documents in 2026.</p>
+            <div class="highlight-box">
+                <strong>Our Philosophy:</strong> We believe that powerful design tools should not be locked behind expensive subscriptions or heavy hardware requirements. NexGen Studio is built to be lightweight, secure, and universally accessible directly from any modern web browser.
+            </div>
 
-            <h2>Our Mission</h2>
-            <p>To democratize design by providing powerful tools that run directly in your browser without the need for heavy software installations. Whether you are a student, a professional, or a creative enthusiast, NexGen Studio is designed to make your workflow faster, smoother, and more beautiful.</p>
+            <h2>Why We Built This Platform</h2>
+            <p>In today's fast-paced professional world, documents are more than just text on a page; they are a reflection of individual and corporate identity. However, traditional PDF editors are often either too rudimentary for professional use or too cumbersome for quick tasks. NexGen Studio solves this by providing a "Canvas-First" approach. By utilizing the <strong>Fabric.js</strong> framework, we have enabled a truly interactive drag-and-drop experience that allows users to manipulate typography, imagery, and structural elements with pixel-perfect precision.</p>
+
+            <h2>Meet the Developer: Sayyed Mohsin Ali</h2>
+            <p>NexGen Studio is the brainchild of <strong>Sayyed Mohsin Ali</strong>, a passionate technologist with extensive experience in Information Technology, Social Work, and Education. Based in the Yavatmal district, Mohsin has dedicated his career to creating tools that solve real-world problems. His background in teaching AI and digital literacy to students has deeply influenced the intuitive user interface of NexGen Studio, making it accessible for both beginners and seasoned professionals. Mohsin's commitment to "Human-Like" UI/UX design ensures that every feature in NexGen Studio feels natural and purposeful.</p>
+
+            <h2>Innovation Through Client-Side Processing</h2>
+            <p>One of the core technological pillars of NexGen Studio is our commitment to <strong>Privacy-First logic</strong>. Unlike most online editors that require you to upload sensitive documents to a remote server, NexGen Studio processes everything locally within your browser. This client-side processing means that your data never leaves your machine, providing a layer of security that is essential for handling financial reports, legal contracts, and personal resumes. This architecture not only protects your privacy but also ensures lightning-fast performance, as there are no upload or download delays during the editing process.</p>
+
+            <h2>Looking Toward the Future</h2>
+            <p>As we continue to evolve, NexGen Studio aims to integrate even more advanced features, such as smart document automation, multi-format exports beyond PDF, and advanced vector manipulation tools. We are constantly listening to our global community of users to refine our features and provide the most robust design experience possible. Whether you are designing a world-class report or a simple classroom assignment, NexGen Studio is here to ensure your vision is realized with elegance and professional flair.</p>
         </div>
     </main>
 
@@ -49,8 +59,8 @@
             <a href="privacy.html">Privacy</a>
             <a href="contact.html">Contact</a>
             <div class="v-sep"></div>
-            <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github" size="14"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin" size="14"></i> LinkedIn</a>
         </div>
     </footer>
     <script>lucide.createIcons();</script>
