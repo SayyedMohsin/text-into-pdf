@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Guide | NexGen Studio</title>
+    <title>Professional Guide | NexGen Studio</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #8b3dff; --text: #1f2937; }
         body { font-family: 'Inter', sans-serif; line-height: 1.8; color: var(--text); background: white; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        .header-section { background: #fcfaff; padding: 100px 20px 60px; text-align: center; border-bottom: 1px solid #eee; }
-        .container { max-width: 850px; margin: auto; padding: 50px 20px; flex: 1; }
-        h1 { font-size: 45px; letter-spacing: -1px; }
-        h2 { font-size: 26px; color: var(--primary); margin-top: 40px; border-bottom: 2px solid #f4f5f7; padding-bottom: 8px; }
+        .header-hero { background: #fcfaff; padding: 100px 20px 80px; text-align: center; border-bottom: 1px solid #eee; }
+        .container { max-width: 900px; margin: auto; padding: 60px 20px; flex: 1; }
+        h1 { font-size: 48px; font-weight: 800; letter-spacing: -1.5px; color: #111; margin-bottom: 15px; }
+        h2 { font-size: 30px; color: var(--primary); margin-top: 50px; border-bottom: 3px solid #f4f5f7; padding-bottom: 12px; margin-bottom: 25px; }
+        h3 { font-size: 22px; margin-top: 35px; color: #111; }
+        p { font-size: 18px; color: #4b5563; margin-bottom: 25px; }
+        .tutorial-step { background: #f9fafb; padding: 30px; border-radius: 16px; margin-bottom: 30px; border: 1px solid #eee; }
+        .step-tag { background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .faq-card { background: white; border: 1px solid #eee; padding: 25px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
         
         .project-footer { height: 60px; background: white; border-top: 1px solid #d2d2d2; display: flex; justify-content: center; align-items: center; width: 100%; margin-top: auto; }
         .footer-content { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #333; flex-wrap: wrap; justify-content: center; }
@@ -21,21 +26,55 @@
     </style>
 </head>
 <body>
-    <div class="header-section">
-        <h1>NexGen Studio User Guide</h1>
-        <p>Learn how to create professional documents with our easy-to-use editor.</p>
-    </div>
+    <header class="header-hero">
+        <h1>Mastering NexGen Studio</h1>
+        <p>Your comprehensive guide to creating, designing, and exporting professional documents with ease.</p>
+    </header>
 
     <main class="container">
-        <h2>How to Create a Professional PDF?</h2>
-        <p>1. Start by adding <strong>Heading</strong> or <strong>Body</strong> text from the top navbar. You can double-click any text to edit its content.</p>
-        <p>2. Use the <strong>Floating Toolbar</strong> to customize fonts (Inter, Poppins, Montserrat) and colors. You can also adjust text alignment (Left, Center, Right, Justify) for a better layout.</p>
-        <p>3. <strong>Upload Images:</strong> Use the upload button to bring in your own logos or photos. Our <strong>Precision Crop</strong> tool allows you to focus on the perfect area of your image.</p>
-        <p>4. <strong>Managing Pages:</strong> Add multiple pages for complex documents and rotate them between Portrait and Landscape using the <strong>Rotate</strong> tool.</p>
+        <h2>Phase 1: Setting Up Your Workspace</h2>
+        <div class="tutorial-step">
+            <span class="step-tag">Step 01</span>
+            <h3>Canvas Initialization</h3>
+            <p>When you first launch the NexGen Studio editor, you are presented with a blank, industry-standard A4 canvas (794x1123 pixels). This canvas is your primary creative zone. You can use the <strong>BG (Background)</strong> tool to set a base color for your project, whether it's a stark professional white or a branded corporate shade.</p>
+        </div>
 
-        <h2>Frequently Asked Questions</h2>
-        <p><strong>Is NexGen Studio free?</strong> Yes, our tool is 100% free and always will be.</p>
-        <p><strong>Is it mobile-friendly?</strong> Absolutely. You can design on the go using our responsive mobile interface.</p>
+        <h2>Phase 2: Advanced Typography and Text Control</h2>
+        <p>NexGen Studio provides granular control over text elements, which is essential for establishing a clear visual hierarchy in your documents. Typography is not just about words; it is about readability and impact.</p>
+        <div class="tutorial-step">
+            <span class="step-tag">Step 02</span>
+            <h3>Dynamic Text Components</h3>
+            <p>Add <strong>Headings</strong> for major titles and <strong>Body</strong> text for detailed descriptions. By double-clicking any text element, you activate the <strong>Floating Toolbar</strong>. This allows you to switch between high-performance fonts like <em>Inter</em>, <em>Poppins</em>, and <em>Arial</em>, and adjust font sizes to fit your specific layout needs.</p>
+        </div>
+        <div class="tutorial-step">
+            <span class="step-tag">Step 03</span>
+            <h3>Alignment and Spacing Mastery</h3>
+            <p>Utilize the alignment tools (Left, Center, Right, Justify) to maintain a professional structural balance. For long paragraphs, the <strong>Justify</strong> tool ensures clean edges on both sides, while the <strong>Bullet</strong> and <strong>Numbering</strong> systems are perfect for organizing complex lists and data points.</p>
+        </div>
+
+        <h2>Phase 3: Image Manipulation and Media Integration</h2>
+        <div class="tutorial-step">
+            <span class="step-tag">Step 04</span>
+            <h3>Precision Image Handling</h3>
+            <p>Professional PDFs often require logos, diagrams, or photos. Use the <strong>Upload</strong> feature to bring in your media. Once an image is on the canvas, you can use the <strong>Precision Crop</strong> tool. By adjusting the crop box, you can focus on the most important parts of an image without losing resolution or distorting the aspect ratio.</p>
+        </div>
+
+        <h2>Phase 4: Exporting and Multi-Page Management</h2>
+        <p>NexGen Studio is designed for complex projects. If your document requires more space, use the <strong>Plus (+)</strong> icon to add a new page. Each page can be individually styled and managed. Our <strong>Rotate</strong> tool also allows you to switch between Portrait and Landscape orientations instantly.</p>
+
+        <h2>Detailed Frequently Asked Questions</h2>
+        <div class="faq-card">
+            <strong>Q: Why does the PDF download take a few seconds?</strong>
+            <p>NexGen Studio uses a 2x resolution multiplier during export. This ensures that every image and text element is rendered with maximum sharpness, making your PDFs ready for high-quality printing. Depending on the number of images, this rendering process takes a brief moment to ensure excellence.</p>
+        </div>
+        <div class="faq-card">
+            <strong>Q: Are my documents stored on your servers?</strong>
+            <p>Absolutely not. NexGen Studio operates on a 100% client-side logic. Every change you make happens directly in your browser's memory. Your data never leaves your computer, ensuring total privacy and security for your sensitive work.</p>
+        </div>
+        <div class="faq-card">
+            <strong>Q: Can I use NexGen Studio for official resumes?</strong>
+            <p>Yes. By combining our premium typography tools with precision line and image tools, you can create world-class resumes that are indistinguishable from those created on expensive desktop suites.</p>
+        </div>
     </main>
 
     <footer class="project-footer">
@@ -48,8 +87,8 @@
             <a href="privacy.html">Privacy</a>
             <a href="contact.html">Contact</a>
             <div class="v-sep"></div>
-            <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github" size="14"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin" size="14"></i> LinkedIn</a>
         </div>
     </footer>
     <script>lucide.createIcons();</script>
