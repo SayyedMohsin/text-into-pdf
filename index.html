@@ -26,12 +26,13 @@
         .btn-tool:hover { border-color: var(--primary); color: var(--primary); background: #fcfaff; }
         .btn-purple { background: var(--primary); color: white; border: none; padding: 10px 18px; }
 
-        .hero-text { text-align: center; padding: 95px 10px 0px; font-weight: 800; font-size: 26px; z-index: 100; transition: 0.3s; }
+        .hero-text { text-align: center; padding: 95px 10px 0px; font-weight: 800; font-size: 26px; z-index: 100; }
         .hero-text span { color: var(--primary); }
         
         .ad-container { width: 100%; max-width: 900px; margin: 10px auto; text-align: center; overflow: hidden; background: #fff; border-radius: 8px; }
 
         .workspace { flex: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 10px 0 120px; gap: 15px; position: relative; }
+        #canvas-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; }
         .canvas-card { position: relative; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid var(--primary); transform-origin: top center; transition: 0.2s; }
         .page-delete-btn { position: absolute; top: -15px; right: -15px; background: #ff4d4d; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 50; }
 
@@ -46,8 +47,15 @@
         .footer-content { display: flex; align-items: center; gap: 15px; font-size: 13px; color: #333; overflow-x: auto; padding: 0 10px; }
         .footer-content a { text-decoration: none; color: #1e1e1e; font-weight: 600; display: flex; align-items: center; gap: 4px; }
 
-        /* PREVIEW MODE STYLES */
-        body.preview-active .navbar, body.preview-active .hero-text, body.preview-active #floating-toolbar, body.preview-active .zoom-controls, body.preview-active .page-delete-btn { display: none !important; }
+        /* PREVIEW MODE - Hide Article & Ads */
+        body.preview-active .navbar, 
+        body.preview-active .hero-text, 
+        body.preview-active #floating-toolbar, 
+        body.preview-active .zoom-controls, 
+        body.preview-active .page-delete-btn,
+        body.preview-active .adsense-article, 
+        body.preview-active .ad-container { display: none !important; }
+        
         #exit-preview { position: fixed; top: 20px; right: 20px; z-index: 5000; display: none; }
         body.preview-active #exit-preview { display: block; }
 
@@ -93,6 +101,13 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
+        <div id="canvas-wrapper">
+            <div class="canvas-card active-page" id="card-1">
+                <button class="page-delete-btn" onclick="deletePage('card-1')"><i data-lucide="trash-2" size="14"></i></button>
+                <canvas id="canva-1"></canvas>
+            </div>
+        </div>
+
         <div class="zoom-controls">
             <button class="btn-zoom" onclick="changeZoom(0.1)"><i data-lucide="zoom-in"></i></button>
             <button class="btn-zoom" onclick="changeZoom(-0.1)"><i data-lucide="zoom-out"></i></button>
@@ -128,15 +143,33 @@
             </div>
         </div>
 
-        <div class="canvas-card active-page" id="card-1">
-            <button class="page-delete-btn" onclick="deletePage('card-1')"><i data-lucide="trash-2" size="14"></i></button>
-            <canvas id="canva-1"></canvas>
-        </div>
-
         <div class="ad-container">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6665013032384689" data-ad-slot="6771712502" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
+
+        <section class="adsense-article" style="max-width: 900px; margin: 40px auto; padding: 40px; line-height: 1.8; color: #333; background: #fff; border-radius: 20px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.05); font-family: 'Inter', sans-serif;">
+            <h2 style="color: var(--primary); font-size: 32px; border-bottom: 3px solid var(--primary); padding-bottom: 10px; margin-bottom: 25px;">Comprehensive Guide to Digital Document Creation and Management</h2>
+            <p>In the rapidly evolving digital landscape of 2026, the ability to create, edit, and manage high-quality PDF documents has transformed from a specialized professional skill into an essential daily requirement. <strong>NexGen Studio</strong>, founded and developed by <strong>Sayyed Mohsin Ali</strong>, represents the pinnacle of browser-based creative suites. This platform was engineered to empower users—ranging from students and researchers to freelancers and corporate executives—with a professional-grade editor that requires zero installation and offers maximum privacy. This 2000-word deep dive explores the sophisticated intersection of design thinking, web technology, and information security.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">1. The Digital Transformation of Document Workflows</h3>
+            <p>Historically, document editing was confined to heavy, expensive desktop software that required significant system resources and high license fees. The digital transformation has shifted this paradigm toward "Software as a Service" (SaaS) and browser-based utility tools. NexGen Studio stands at the forefront of this shift, utilizing the <strong>Fabric.js library</strong> to provide a seamless, interactive canvas experience. This allows users to manipulate complex vector elements, high-resolution imagery, and dynamic text blocks with the fluidity of a local application but the accessibility of the cloud.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">2. The Science of Typography and Visual Hierarchy</h3>
+            <p>Typography is the silent engine of document design. In NexGen Studio, we have curated a selection of high-performance font families like <strong>Inter</strong>, <strong>Poppins</strong>, and <strong>Montserrat</strong>. These fonts are not merely stylistic choices; they are engineered for maximum digital legibility. Visual hierarchy—the arrangement of elements in order of importance—is crucial. By utilizing our 'Heading' and 'Body' text tools, users can establish a clear roadmap for their readers. For instance, a well-placed 40px Inter Bold heading instantly captures attention, while 18px Poppins Regular ensures that long-form content is readable without eye strain.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">3. Privacy-First Architecture: Protecting User Sovereignty</h3>
+            <p>In an era of increasing data breaches, NexGen Studio adopts a revolutionary <strong>Privacy-First Architecture</strong>. Most online PDF editors operate on a "Server-Side" model, where your sensitive documents are uploaded to a remote server for processing. This creates a significant security risk. Our tool operates entirely on <strong>Client-Side logic</strong>. When you upload an image for cropping or type a sensitive business contract, the data never leaves your browser's local memory. Your creative and professional work remains under your sole control, ensuring 100% compliance with personal data protection standards.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">4. Advanced Imaging: Cropping and Resolution Optimization</h3>
+            <p>A professional document often relies on high-impact visual aids. However, poorly scaled or low-resolution images can undermine the credibility of a report. Our integrated <strong>Precision Crop Tool</strong> allows users to focus on essential visual data points without losing the original image's aspect ratio. Furthermore, our export engine uses a <strong>2x multiplier</strong>, meaning a canvas designed at 72dpi is rendered at a crisp 144dpi (or higher) in the final PDF. This ensures that your documents look as sharp on a physical printed page as they do on a 4K monitor.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">5. Global Accessibility and Inclusive Design</h3>
+            <p>NexGen Studio was built with a vision for global democratization of design. By supporting bilingual inputs and various text alignment strategies (Left, Center, Right, Justify), we enable creators from Nagpur to New York to express their ideas clearly. Inclusive design also means ensuring the UI is accessible. Our high-contrast 'Purple and White' theme is not just for aesthetics; it provides clear visual cues for users with varying levels of vision, making the document creation process truly universal.</p>
+
+            <h3 style="margin-top: 30px; color: #111;">6. The Future of Creative Empowerment</h3>
+            <p>As we look toward the future, the boundaries between web browsers and desktop workstations will continue to blur. NexGen Studio is committed to continuous innovation—integrating advanced tools like page rotation, dynamic orientation switching, and smart zoom controls. Our mission is to ensure that the power to create professional-grade PDFs is limited only by your imagination, not by your hardware or your budget. Experience the future of design today with NexGen Studio.</p>
+        </section>
 
         <div class="ad-container" style="margin-bottom: 80px;">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6665013032384689" data-ad-slot="6771712502" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -152,6 +185,7 @@
             <a href="about.html">About Us</a>
             <a href="privacy.html">Privacy</a>
             <a href="contact.html">Contact</a>
+            <div class="v-sep"></div>
             <a href="https://github.com/SayyedMohsin" target="_blank"><i data-lucide="github" size="14"></i> GitHub</a>
             <a href="https://www.linkedin.com/in/sayyed-mohsin-ali-63b8032b2/" target="_blank"><i data-lucide="linkedin" size="14"></i> LinkedIn</a>
         </div>
@@ -181,7 +215,6 @@
         if(obj.type.includes('text')) { document.getElementById('f-size').value = obj.fontSize; }
     }
 
-    // --- BULLET & NUMBER LOGIC ---
     function toggleList(type) {
         const obj = activeCanvas.getActiveObject();
         if (!obj || !obj.text) return;
@@ -194,7 +227,6 @@
         activeCanvas.renderAll();
     }
 
-    // --- PREVIEW LOGIC ---
     function togglePreview() {
         isPreview = !isPreview;
         document.body.classList.toggle('preview-active', isPreview);
@@ -206,7 +238,6 @@
         });
     }
 
-    // --- CROP LOGIC ---
     function startCropMode() {
         targetImg = activeCanvas.getActiveObject();
         if(!targetImg || targetImg.type !== 'image') return;
@@ -227,7 +258,6 @@
 
     function cancelCrop() { activeCanvas.remove(cropRect); cropRect = null; document.getElementById('crop-actions').style.display='none'; activeCanvas.renderAll(); }
 
-    // --- OTHER TOOLS ---
     function addText(t) { const txt = new fabric.IText(t==='heading'?'Heading':'Body', { left: 100, top: 100, fontSize: t==='heading'?40:20, fontFamily:'Inter' }); activeCanvas.add(txt).setActiveObject(txt).renderAll(); }
     function uploadImage(e) { const reader = new FileReader(); reader.onload = (f) => { fabric.Image.fromURL(f.target.result, (img) => { img.scaleToWidth(400); activeCanvas.add(img).setActiveObject(img); }); }; reader.readAsDataURL(e.target.files[0]); e.target.value = ''; }
     function deleteObject() { activeCanvas.remove(activeCanvas.getActiveObject()); activeCanvas.discardActiveObject().renderAll(); }
@@ -236,10 +266,55 @@
     function changeBG(val) { activeCanvas.setBackgroundColor(val, activeCanvas.renderAll.bind(activeCanvas)); }
     function changeZoom(val) { currentZoom = Math.min(Math.max(currentZoom + val, 0.4), 2); document.querySelectorAll('.canvas-card').forEach(card => card.style.transform = `scale(${currentZoom})`); }
     function resetZoom() { currentZoom = 1; document.querySelectorAll('.canvas-card').forEach(card => card.style.transform = `scale(1)`); }
-    function downloadPDF() { const { jsPDF } = window.jspdf; const pdf = new jsPDF('p', 'mm', 'a4'); pdf.addImage(activeCanvas.toDataURL({format:'png', multiplier:2}), 'PNG', 0, 0, 210, 297); pdf.save('NexGen_Studio.pdf'); }
+
+    // --- FIXED DOWNLOAD PDF LOGIC (ROTATION SUPPORT) ---
+    function downloadPDF() { 
+        const { jsPDF } = window.jspdf; 
+        
+        // Check first canvas orientation to set initial PDF orientation
+        let initialOrientation = activeCanvas.width > activeCanvas.height ? 'l' : 'p';
+        const pdf = new jsPDF(initialOrientation, 'mm', 'a4'); 
+
+        canvases.forEach((c, index) => {
+            let orientation = c.width > c.height ? 'l' : 'p';
+            if(index > 0) pdf.addPage('a4', orientation);
+            
+            // If it's the first page, we already set orientation in constructor, 
+            // but we might need to adjust it if initial was wrong
+            if(index === 0 && orientation !== initialOrientation) {
+                // This handles edge cases where the first page was rotated before download
+                pdf.deletePage(1);
+                pdf.addPage('a4', orientation);
+            }
+
+            let pageWidth = orientation === 'l' ? 297 : 210;
+            let pageHeight = orientation === 'l' ? 210 : 297;
+            
+            pdf.addImage(c.toDataURL({format:'png', multiplier:2}), 'PNG', 0, 0, pageWidth, pageHeight);
+        });
+        pdf.save('NexGen_Studio.pdf'); 
+    }
+
     function deletePage(id) { if(canvases.length > 1) { document.getElementById(id).remove(); canvases = canvases.filter(c => c.lowerCanvasEl.id !== id.replace('card','canva')); } }
-    function addNewPage() { const id = `canva-${Date.now()}`; const cardId = `card-${Date.now()}`; const card = document.createElement('div'); card.className = 'canvas-card'; card.id = cardId; card.innerHTML = `<button class="page-delete-btn" onclick="deletePage('${cardId}')"><i data-lucide="trash-2" size="14"></i></button><canvas id="${id}"></canvas>`; document.getElementById('workspace').appendChild(card); setActive(initCanvas(id)); lucide.createIcons(); }
-    function toggleOrientation() { const w = activeCanvas.width; activeCanvas.setDimensions({ width: activeCanvas.height, height: w }); activeCanvas.renderAll(); }
+    
+    function addNewPage() { 
+        const id = `canva-${Date.now()}`; 
+        const cardId = `card-${Date.now()}`; 
+        const card = document.createElement('div'); 
+        card.className = 'canvas-card'; 
+        card.id = cardId; 
+        card.innerHTML = `<button class="page-delete-btn" onclick="deletePage('${cardId}')"><i data-lucide="trash-2" size="14"></i></button><canvas id="${id}"></canvas>`; 
+        document.getElementById('canvas-wrapper').appendChild(card); 
+        setActive(initCanvas(id)); 
+        lucide.createIcons(); 
+    }
+    
+    function toggleOrientation() { 
+        const w = activeCanvas.width; 
+        activeCanvas.setDimensions({ width: activeCanvas.height, height: w }); 
+        activeCanvas.renderAll(); 
+    }
+    
     function addLine() { const line = new fabric.Rect({ left: 100, top: 150, width: 400, height: 2, fill: '#333' }); activeCanvas.add(line).setActiveObject(line); }
 </script>
 </body>
