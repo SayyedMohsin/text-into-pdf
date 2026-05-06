@@ -1,6 +1,6 @@
 # 🚀 NexGen Studio | Professional Design Suite
 
-NexGen Studio ek powerful, browser-based digital design aur document editing tool hai. Ise high-performance aur ease-of-use ko dhyan mein rakh kar banaya gaya hai taaki students aur professionals bina kisi heavy software ke professional graphics aur PDFs taiyar kar saken.
+NexGen Studio is a powerful browser-based digital design and document editing platform built for high performance and ease of use. It enables students and professionals to create professional graphics and edit documents without installing heavy software. Users can also quickly convert text into PDF files directly from the browser without requiring login or account registration.
 
 ## ✨ Key Features
 
